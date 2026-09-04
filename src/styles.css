@@ -1,0 +1,181 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * VADA-METRICS design system.
+ * Deep charcoal laboratory surfaces, warm golden accents (fried food),
+ * cyan for computer-vision overlays, red warnings, green success.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 3px);
+  --radius-md: calc(var(--radius) - 1px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-cyan: var(--cyan);
+  --color-gold: var(--gold);
+  --color-gold-dim: var(--gold-dim);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.35rem;
+  --background: oklch(0.16 0.012 75);
+  --foreground: oklch(0.95 0.008 90);
+  --card: oklch(0.2 0.014 78);
+  --card-foreground: oklch(0.95 0.008 90);
+  --popover: oklch(0.19 0.014 78);
+  --popover-foreground: oklch(0.95 0.008 90);
+  --primary: oklch(0.82 0.16 82);
+  --primary-foreground: oklch(0.18 0.03 70);
+  --secondary: oklch(0.26 0.016 80);
+  --secondary-foreground: oklch(0.93 0.01 90);
+  --muted: oklch(0.24 0.012 80);
+  --muted-foreground: oklch(0.68 0.018 85);
+  --accent: oklch(0.3 0.03 82);
+  --accent-foreground: oklch(0.95 0.01 90);
+  --destructive: oklch(0.62 0.21 25);
+  --destructive-foreground: oklch(0.97 0.01 90);
+  --success: oklch(0.75 0.17 150);
+  --warning: oklch(0.8 0.16 70);
+  --cyan: oklch(0.82 0.13 200);
+  --gold: oklch(0.82 0.16 82);
+  --gold-dim: oklch(0.62 0.11 78);
+  --border: oklch(0.3 0.016 80);
+  --input: oklch(0.3 0.016 80);
+  --ring: oklch(0.82 0.16 82);
+  --chart-1: oklch(0.82 0.16 82);
+  --chart-2: oklch(0.82 0.13 200);
+  --chart-3: oklch(0.75 0.17 150);
+  --chart-4: oklch(0.62 0.21 25);
+  --chart-5: oklch(0.68 0.018 85);
+  --sidebar: oklch(0.19 0.014 78);
+  --sidebar-foreground: oklch(0.95 0.008 90);
+  --sidebar-primary: oklch(0.82 0.16 82);
+  --sidebar-primary-foreground: oklch(0.18 0.03 70);
+  --sidebar-accent: oklch(0.26 0.016 80);
+  --sidebar-accent-foreground: oklch(0.95 0.01 90);
+  --sidebar-border: oklch(0.3 0.016 80);
+  --sidebar-ring: oklch(0.82 0.16 82);
+
+  --gradient-gold: linear-gradient(135deg, oklch(0.88 0.14 88), oklch(0.72 0.16 62));
+  --shadow-lab: 0 24px 60px -30px oklch(0.82 0.16 82 / 0.45);
+  --grid-line: oklch(0.82 0.16 82 / 0.06);
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+}
+
+@utility lab-panel {
+  background-color: color-mix(in oklab, var(--card) 82%, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(10px);
+}
+
+@utility label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+@utility text-gradient-gold {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility scanline {
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes vada-scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(1200%);
+  }
+}
+
+@keyframes vada-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-scanline {
+  animation: vada-scan 2.4s linear infinite;
+}
+
+.animate-blip {
+  animation: vada-pulse 1.6s ease-in-out infinite;
+}
